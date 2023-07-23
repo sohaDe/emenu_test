@@ -1,0 +1,20 @@
+
+<div class="container">
+  <mat-toolbar>
+    <span class="logo" style="padding: 10px">My Application</span>
+    <a class="mat-button user" style="padding: 10px 20px" aria-hidden="false" routerLink="/users" >Users</a>
+<!--    <div *ngIf="showLoadingBar">-->
+    <mat-progress-bar *ngIf="showLoadingBar" mode="indeterminate"></mat-progress-bar>
+    <router-outlet></router-outlet>
+
+    <form>
+      <mat-form-field >
+        <mat-label>Search</mat-label>
+        <input matInput  type="text" name="j"
+               [(ngModel)]="filterValue"  (input)="findById(filterValue)" placeholder="Enter Id" >
+        <!--      <input (keyup)="filter($event)">-->
+      </mat-form-field>
+    </form>
+
+  </mat-toolbar>
+</div>

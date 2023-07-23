@@ -1,0 +1,48 @@
+<!--<form [style.background]="'skyblue'">-->
+<!--  <mat-form-field >-->
+<!--    <mat-label>Search</mat-label>-->
+<!--    <input matInput  type="text" name="name"-->
+<!--           [(ngModel)]="filterValue"  (input)="findById(filterValue)" placeholder="Enter Id" >-->
+<!--    &lt;!&ndash;      <input (keyup)="filter($event)">&ndash;&gt;-->
+<!--  </mat-form-field>-->
+
+<!--</form>-->
+
+<div class="landing">
+  <div class="dis">
+  </div>
+</div>
+
+<div  *ngIf="dataSource" class="cards" >
+  <div class="con" >
+  <div  fxLayout="row">
+    <div fxFlex.gt-sm="100%">
+      <mat-grid-list cols="3" rowHeight="200px"  >
+        <mat-grid-tile   *ngFor="let tile of dataSource.data"
+                       [colspan]="1"
+                       [rowspan]="2">
+          <mat-card (click)="navigateToDetails(tile.id)" style="max-width: 400px;" class="box">
+            <mat-card-header>
+              <mat-card-title style="color:black">{{tile.id}}</mat-card-title>
+              <mat-card-subtitle >{{tile.first_name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <img mat-card-image src="{{tile.avatar}}" alt="Photo">
+            </mat-card-content>
+          </mat-card>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+<div class="pag">
+  <mat-paginator [length]="dataSource.total"
+                 [pageSize]="dataSource.per_page"
+                 [pageSizeOptions]="[6]"
+                 (page)="pageEvent=$event;onPaginated($event)" >
+  </mat-paginator>
+</div>
+</div>
+</div>
+
+
